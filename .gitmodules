@@ -1,0 +1,3 @@
+[submodule "Cdictionary"]
+	path = Cdictionary
+	url = git@github.com:jaxsonpd/Cdictionary.git
