@@ -21,11 +21,11 @@ test_decode: decodeMorse
 decodeMorse: decodeMorse.o dictionary.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
-decodeMorse.o: decodeMorse.c decodeMorse.h Cdicitioary/dictionary.h
+decodeMorse.o: decodeMorse.c decodeMorse.h ./Cdictionary/dictionary.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-dictionary.o: Cdicitioary/dictionary.c Cdicitioary/dictionary.h
-	$(CC) $(CFLAGS) -c $< -o $@1
+dictionary.o: ./Cdictionary/dictionary.c ./Cdictionary/dictionary.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 
 # Clean up
