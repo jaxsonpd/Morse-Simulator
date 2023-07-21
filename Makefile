@@ -11,39 +11,25 @@ endif
 # Compiler
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic -g
-# Targets
 
+# Targets
 # Test decodeMorse module
 .PHONY: test_decode
-test_decode: decodeMorseTest
-	@echo == Testing decodeMorse module ==
+test_decode: decodeMorse  
 	@./decodeMorseTest
 
-decodeMorseTest: decodeMorseTest.o decodeMorse.o dictionary.o
+decodeMorse: decodeMorse.o dictionary.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
-decodeMorse.o: decodeMorse.c decodeMorse.h dictionary.h
+decodeMorse.o: decodeMorse.c decodeMorse.h Cdicitioary/dictionary.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Test the dictionary module
-.PHONY: test_dictionary
-test_dictionary: dictionaryTest
-	@echo == Testing dictionary module ==
-	@./dictionaryTest
-
-dictionaryTest: dictionaryTest.o dictionary.o
-	$(CC) $(CFLAGS) $^ -o $@ -lm
-
-dictionary.o: dictionary.c dictionary.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
-dictionaryTest.o: dictionaryTest.c dictionary.o dictionary.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
+dictionary.o: Cdicitioary/dictionary.c Cdicitioary/dictionary.h
+	$(CC) $(CFLAGS) -c $< -o $@1
 
 
 # Clean up
 .PHONY: clean
 clean:
-	rm -fo *.o
-	rm -fo *.exe
+	rm *.o
+	rm *.exe
