@@ -63,4 +63,19 @@ char* decodeMorse(char* message, int size) {
     stringIntDict_free(morseDict);
 
     return output;
+
 }
+
+int main(void) {
+    char* morse = malloc(sizeof(char) * 80);
+    memcpy(morse, "... --- ...", 80); // SOS
+
+    char* decoded = decodeMorse(morse, 3);
+
+    if (strcmp(decoded, "SOS") != 0) {
+        printf("SOS decode test failed\n");
+    }
+
+	printf("All Tests Passed\n");
+}
+	
